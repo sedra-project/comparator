@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Résultats – Comparateur d’hôtels</title>
+    <style>
+      table { border-collapse: collapse; width: 80%; margin: auto; }
+      th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+      th { background-color: #eee; }
+      .highlight { color: darkgreen; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2 th:text="'🏨 Résultats pour ' + ${city}"></h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Hôtel</th>
+        <th>Ville</th>
+        <th>Offres</th>
+        <th>Prix Minimum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hotel : ${results}">
+        <td th:text="${hotel.name}"></td>
+        <td th:text="${hotel.city}"></td>
+        <td>
+            <ul>
+                <li th:each="offer : ${hotel.offers}"
+                    th:text="${offer.provider} + ' : ' + ${offer.pricePerNight} + ' ' + ${offer.currency}"></li>
+            </ul>
+        </td>
+        <td class="highlight" th:text="${hotel.minPrice} + ' €'"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p style="text-align:center;">
+    <a th:href="@{/hotels/search}">Nouvelle recherche</a>
+</p>
+
+</body>
+</html>
