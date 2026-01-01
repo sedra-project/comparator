@@ -1,0 +1,20 @@
+[
+  { "name": "Sunrise Palace", "city": "Paris", "price": 138, "currency": "EUR" },
+  { "name": "Eiffel Stay", "city": "Paris", "price": 155, "currency": "EUR" },
+  { "name": "Louvre Boutique", "city": "Paris", "price": 205, "currency": "EUR" },
+  { "name": "Montmartre Cozy", "city": "Paris", "price": 125, "currency": "EUR" },
+  { "name": "Seine Riverside", "city": "Paris", "price": 170, "currency": "EUR" },
+
+  { "name": "Blue Ocean", "city": "Nice", "price": 128, "currency": "EUR" },
+  { "name": "Promenade View", "city": "Nice", "price": 150, "currency": "EUR" },
+  { "name": "Old Town Charm", "city": "Nice", "price": 115, "currency": "EUR" },
+  { "name": "Azure Suites", "city": "Nice", "price": 175, "currency": "EUR" },
+
+  { "name": "Rhone Riverside", "city": "Lyon", "price": 120, "currency": "EUR" },
+  { "name": "Bellecour Central", "city": "Lyon", "price": 145, "currency": "EUR" },
+  { "name": "Vieux Lyon Loft", "city": "Lyon", "price": 112, "currency": "EUR" },
+
+  { "name": "Vieux Port Hotel", "city": "Marseille", "price": 135, "currency": "EUR" },
+  { "name": "Calanques Retreat", "city": "Marseille", "price": 185, "currency": "EUR" },
+  { "name": "Panier Boutique", "city": "Marseille", "price": 118, "currency": "EUR" }
+]

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:replace="layout :: head('Comparateur d’hôtels')"></head>
+<body>
+
+<nav th:replace="layout :: navbar('hotels')"></nav>
+
+<main th:replace="layout :: page(~{::content})">
+    <div th:fragment="content">
+        <div class="row">
+            <div class="col-12 col-lg-10 mx-auto">
+
+                <!-- Titre -->
+                <div class="mb-3">
+                    <h1 class="h3 mb-1">Comparer les prix d’hôtels</h1>
+                    <p class="text-muted mb-0">Recherche par ville + dates, agrégation multi-fournisseurs.</p>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <form th:action="@{/hotels}" th:object="${form}" method="post" class="row g-3">
+
+                            <!-- Ville -->
+                            <div class="col-12 col-md-4">
+                                <label class="form-label" for="city">Ville</label>
+                                <input id="city" type="text" class="form-control"
+                                       th:field="*{city}" placeholder="Paris" required>
+                                <div class="text-danger small mt-1"
+                                     th:if="${#fields.hasErrors('city')}"
+                                     th:errors="*{city}">
+                                </div>
+                            </div>
+
+                            <!-- Check-in -->
+                            <div class="col-12 col-md-3">
+                                <label class="form-label" for="checkIn">Check‑in</label>
+                                <input id="checkIn" type="date" class="form-control"
+                                       th:field="*{checkIn}" required>
+                                <div class="text-danger small mt-1"
+                                     th:if="${#fields.hasErrors('checkIn')}"
+                                     th:errors="*{checkIn}">
+                                </div>
+                            </div>
+
+                            <!-- Check-out -->
+                            <div class="col-12 col-md-3">
+                                <label class="form-label" for="checkOut">Check‑out</label>
+                                <input id="checkOut" type="date" class="form-control"
+                                       th:field="*{checkOut}" required>
+                                <div class="text-danger small mt-1"
+                                     th:if="${#fields.hasErrors('checkOut')}"
+                                     th:errors="*{checkOut}">
+                                </div>
+                            </div>
+
+                            <!-- Bouton -->
+                            <div class="col-12 col-md-2 d-grid">
+                                <label class="form-label d-none d-md-block">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary">
+                                    Comparer
+                                </button>
+                            </div>
+
+                            <!-- Erreurs globales (ex: dateRange.invalid) -->
+                            <div class="col-12" th:if="${#fields.hasGlobalErrors()}">
+                                <div class="alert alert-danger mb-0">
+                                    <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Résultats -->
+                <div class="card shadow-sm" th:if="${searched}">
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h5 mb-0">Résultats</h2>
+                            <span class="badge text-bg-secondary"
+                                  th:text="${#lists.size(results)} + ' hôtel(s)'">
+            </span>
+                        </div>
+
+                        <!-- Aucun résultat -->
+                        <div th:if="${#lists.isEmpty(results)}" class="alert alert-warning mb-0">
+                            Aucun hôtel trouvé pour cette recherche.
+                        </div>
+
+                        <!-- Table résultats -->
+                        <div th:if="${!#lists.isEmpty(results)}" class="table-responsive">
+                            <table class="table table-striped align-middle">
+                                <thead>
+                                <tr>
+                                    <th>Hôtel</th>
+                                    <th>Ville</th>
+                                    <th>Offres</th>
+                                    <th>Prix min</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="hotel : ${results}">
+                                    <td class="fw-semibold" th:text="${hotel.name}"></td>
+                                    <td th:text="${hotel.city}"></td>
+
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-2">
+                    <span th:each="offer : ${hotel.offers}"
+                          class="badge rounded-pill text-bg-light border provider-badge">
+                      <span class="text-muted" th:text="${offer.provider}"></span>
+                      <span th:text="' : ' + ${offer.pricePerNight} + ' ' + ${offer.currency}"></span>
+                    </span>
+                                        </div>
+                                    </td>
+
+                                    <td class="min-price" th:text="${hotel.minPrice} + ' €'"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="layout :: footer"></footer>
+<script th:replace="layout :: scripts"></script>
+
+</body>
+</html>
