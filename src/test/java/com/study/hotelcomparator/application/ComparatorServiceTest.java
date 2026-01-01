@@ -6,13 +6,14 @@ import com.study.hotelcomparator.domain.model.PriceOffer;
 import com.study.hotelcomparator.domain.model.Provider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
+@SpringBootTest
 public class ComparatorServiceTest {
     @Autowired
     ComparatorService service;

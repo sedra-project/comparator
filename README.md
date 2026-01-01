@@ -1,2 +1,0 @@
-# comparator
-java project
