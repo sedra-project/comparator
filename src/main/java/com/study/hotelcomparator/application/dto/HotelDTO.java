@@ -1,8 +1,13 @@
 package com.study.hotelcomparator.application.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.List;
 
+@Setter
+@Getter
 public class HotelDTO {
     private String name;
     private String city;
@@ -19,35 +24,4 @@ public class HotelDTO {
     public HotelDTO() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public BigDecimal getMinPrice() {
-        return minPrice;
-    }
-
-    public void setMinPrice(BigDecimal minPrice) {
-        this.minPrice = minPrice;
-    }
-
-    public List<PriceOfferDTO> getOffers() {
-        return offers;
-    }
-
-    public void setOffers(List<PriceOfferDTO> offers) {
-        this.offers = offers;
-    }
 }

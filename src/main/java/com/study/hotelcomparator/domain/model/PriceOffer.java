@@ -1,7 +1,10 @@
 package com.study.hotelcomparator.domain.model;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
+@Getter
 public class PriceOffer {
     private Provider provider;
     private BigDecimal pricePerNight;
@@ -11,18 +14,6 @@ public class PriceOffer {
         this.provider = provider;
         this.pricePerNight = pricePerNight;
         this.currency = currency;
-    }
-
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public BigDecimal getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public String getCurrency() {
-        return currency;
     }
 
     @Override

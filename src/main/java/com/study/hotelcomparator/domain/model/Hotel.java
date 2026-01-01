@@ -1,12 +1,17 @@
 package com.study.hotelcomparator.domain.model;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel {
     private Long id;
+    @Getter
     private String name;
+    @Getter
     private String city;
+    @Getter
     private final List<PriceOffer> offers = new ArrayList<>();
 
     public Hotel(Long id, String name, String city) {
@@ -18,10 +23,6 @@ public class Hotel {
     public void addOffer(PriceOffer offer) {
         offers.add(offer);
     }
-
-    public String getName() { return name; }
-    public String getCity() { return city; }
-    public List<PriceOffer> getOffers() { return offers; }
 
     public java.math.BigDecimal getMinPrice() {
         return offers.stream()
