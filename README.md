@@ -1,2 +1,2 @@
-L’application a pour objectif de rechercher et d’afficher le prix le plus avantageux. 
-L’utilisateur renseigne la ville ainsi que les dates de début et de fin du séjour.
+Permet de faire des recherche et comparer les tarifs des hotels provenant des porviders.
+Permet d'afficher les prix pour des dates/mettre en évidence la meilleure offre
